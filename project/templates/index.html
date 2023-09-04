@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+{% block main %}
+
+    <h1>It's time to plan your day, {{ username }}!</h1>
+
+<!-- Add Task Form -->
+    <p class="d-inline-flex my-3">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#addForm" aria-expanded="false" aria-controls="addForm">
+            Add Task
+        </button>
+    </p>
+    <div class="collapse" id="addForm">
+        <div class="card card-body text-bg-dark">
+            <form action="/add" method="post" class="row row-cols-lg-auto g-3 align-items-center mx-auto">
+                <div class="col-12">
+                    <input class="form-control" name="task_name" placeholder="Task Name">
+                </div>
+                <div class="col-12">
+                    <input class="form-control" type="date" name="due_date">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<!-- PENding Task Table -->
+    <h2>PENding Tasks</h2>
+    <table class="table table-dark">
+        <thead>
+        <!-- Search form -->
+            <tr>
+                <th colspan="3">
+                    <form action="/search" method="post" class="row row-cols-lg-auto g-3 align-items-center justify-content-center">
+                        <div class="col-12">
+                            <input class="form-control" name="search_input" placeholder="Search">
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </div>
+                    </form>
+                </th>
+            </tr>
+            <tr>
+                <th>Task Name</th>
+                <th>Due Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="task-table-body">
+            {% for pending_task in pending_tasks %}
+                <tr>
+                    <td>{{ pending_task.task_name }}</td>
+                    <td>{{ pending_task.due_date }}</td>
+                    <td>
+                <!-- Complete Button -->
+                        <form method="post" action="/complete/{{ pending_task.id }}" class="d-inline">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-check"></i> Complete
+                            </button>
+                        </form>
+                <!-- Update button -->
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#updateForm{{ pending_task.id }}" aria-expanded="false" aria-controls="updateForm{{ pending_task.id }}">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </button>
+                    </a>
+                <!-- Delete button -->
+                    <form method="post" action="/delete/{{ pending_task.id }}" class="d-inline">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Delete
+                        </button>
+                    </form>
+                </td>
+                </tr>
+        <!-- Update Task Form -->
+                <tr>
+                    <td colspan="3" class="m-0 p-0">
+                        <div class="collapse" id="updateForm{{ pending_task.id }}">
+                            <div class="card card-body text-bg-dark">
+                                <form action="/update/{{ pending_task.id }}" method="post" class="row row-cols-lg-auto g-3 align-items-center mx-auto">
+                                    <div class="col-12">
+                                        <input class="form-control" name="task_name" value="{{ pending_task.task_name }}" placeholder="Task Name">
+                                    </div>
+                                    <div class="col-12">
+                                        <input class="form-control" type="date" name="due_date" value="{{ pending_task.due_date }}" placeholder="Due Date">
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Update Task</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<!-- Completed Task Table -->
+    <h2>Completed Tasks</h2>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Task Name</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for completed_task in completed_tasks %}
+                <tr>
+                    <td>{{ completed_task.task_name }}</td>
+                    <td>{{ completed_task.due_date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

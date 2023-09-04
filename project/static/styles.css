@@ -1,0 +1,39 @@
+/* Custom CSS with the provided color palette */
+
+/* Global styles */
+body {
+    background-color: #0D1B2A;
+    color: #E0E1DD;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styles */
+header {
+    background-color: #1B263B;
+}
+
+header h1 {
+    color: #E0E1DD;
+}
+
+/* Footer styles */
+footer {
+    background-color: #415A77;
+}
+
+footer p {
+    color: white;
+}
+
+/* Main content styles */
+main {
+    min-height: 100vh;
+}
+
+/* Footer link styles */
+footer a {
+    color: white;
+    text-decoration: none;
+}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block main %}
+
+<h1 class="my-3">Account Settings</h1>
+
+<hr>
+
+<h2 class="my-3">Change Username</h2>
+<form action="/change_user" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="New Username">
+    </div>
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" type="password" name="password" placeholder="Password">
+    </div>
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" type="password" name="password_confirmation" placeholder="Password Confirmation">
+    </div>
+    <button type="submit" class="btn btn-primary">Change Username</button>
+</form>
+
+<hr>
+
+<h2 class="my-3">Change Password</h2>
+<form action="/change_pass" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="new_pass" placeholder="New Password">
+    </div>
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" type="password" name="password" placeholder="Old Password">
+    </div>
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" type="password" name="password_confirmation" placeholder="Old Password Confirmation">
+    </div>
+    <button type="submit" class="btn btn-primary">Change Password</button>
+</form>
+
+{% endblock %}

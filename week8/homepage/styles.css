@@ -1,0 +1,19 @@
+#title {
+    border: 1em solid #dee2e6;
+}
+
+.custom {
+    background-color: #f0f0f0;
+}
+
+p.custom2 {
+    font-weight: bold;
+}
+
+* {
+    text-align: justify;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}

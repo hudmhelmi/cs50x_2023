@@ -1,0 +1,17 @@
+CREATE TABLE
+  users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    username TEXT NOT NULL,
+    hash TEXT NOT NULL
+  );
+
+CREATE TABLE
+  tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    user_id INTEGER NOT NULL,
+    task_name TEXT NOT NULL,
+    due_date TEXT NOT NULL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    completed INTEGER DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users (id)
+  );

@@ -1,0 +1,3 @@
+I would characterise the audio aura by taking the average danceability, energy, loudness, speechiness, valence, and tempo of the top 100 songs of the listener. Ranges of this average could be mapped to specific auras using another relational table.
+
+The average of the songs may mask a bimodal distribution of say, tempo. It could be that the listener enjoys both really fast and really slow songs, and an average would misrepresent that preference. We could do a weighted average instead with the higher ranking songs contributing greater weight to the aura. This may offset the issues of taking the raw average.

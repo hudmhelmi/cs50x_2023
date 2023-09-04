@@ -1,0 +1,11 @@
+sort1 uses: Bubble Sort
+
+How do you know?: Bubble sort has a best case of omega(n) and is likely to be faster than selection sort to sort the sorted texts.
+
+sort2 uses: Merge Sort
+
+How do you know?: Merge sort has a worst case of O(n log n) and is likely to be the fastest to sort the random texts.
+
+sort3 uses: Selection Sort
+
+How do you know?: Selection sort has a best case of O(n^2) and is likely to be the program which takes the longest to sort the sorted texts.
